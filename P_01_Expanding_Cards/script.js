@@ -10,6 +10,4 @@ function changeClass(event) {
         panel.classList.remove('active');
     });
     event.target.classList.add('active');
-
-
 }

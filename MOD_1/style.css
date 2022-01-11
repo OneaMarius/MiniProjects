@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --color-1: rgb(252, 252, 252);
+  --color-2: rgb(63, 63, 63);
+  --color-3: rgb(74, 74, 243);
+  --color-4: gray;
+  --url-1: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80");
+  --url-2: url("https://images.unsplash.com/photo-1542785853-cf202360bca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  --url-3: url("https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  --url-4: url("https://images.unsplash.com/photo-1542202229-7d93c33f5d07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  --url-5: url("https://images.unsplash.com/photo-1458668383970-8ddd3927deed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80");
+}
+
+#img1 {
+  background-image: var(--url-1);
+}
+#img2 {
+  background-image: var(--url-2);
+}
+#img3 {
+  background-image: var(--url-3);
+}
+#img4 {
+  background-image: var(--url-4);
+}
+#img5 {
+  background-image: var(--url-5);
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-2);
+}
+
+.loading {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: whitesmoke;
+  font-size: 4rem;
+}
+
+.loading i {
+  cursor: pointer;
+}
+
+.container {
+  z-index: 2;
+  background-color: var(--color-2);
+  filter: blur(25px);
+  width: 100%;
+  height: 100%;
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+}
+
+.container.move {
+  transform: rotate(-20deg);
+}
+
+.circle-container {
+  position: fixed;
+  left: -100px;
+  top: -100px;
+}
+
+.circle {
+  position: relative;
+  background-color: var(--color-3);
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.container.move .circle {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.circle button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 32px;
+  position: absolute;
+  transition: transform 0.5s linear;
+  /* transform: rotate(20deg); */
+}
+
+.container.move .circle button {
+  transform: rotate(90deg);
+}
+
+#close {
+  bottom: 50px;
+  left: 30px;
+}
+
+#open {
+  bottom: 40px;
+  right: 30px;
+}
+
+.main img {
+  max-width: 100%;
+}
+
+.main {
+  max-width: 85%;
+  margin: 25px auto;
+}
+
+.main small {
+  font-style: italic;
+  color: gray;
+}
+
+nav {
+  position: fixed;
+  bottom: 100px;
+  left: 25px;
+  z-index: 1;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin: 20px auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  transform: translateX(-200%);
+  transition: all 0.5s linear;
+}
+
+nav ul li:hover {
+  color: var(--color-3);
+  text-shadow: 1px 1px 1px black;
+  cursor: pointer;
+}
+
+nav ul li + li {
+  margin-left: 15px;
+}
+
+nav ul li + li + li {
+  margin-left: 30px;
+}
+
+nav ul li i {
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: var(--color-3);
+}
+
+.container.move + nav li {
+  transform: translateX(0);
+  /* transition: transform 1s linear; */
+}
+
+/* CONTENT */
+
+.pageContent {
+  display: flex;
+  width: 100%;
+}
+
+.panel {
+  background-size: auto 100%;
+  height: 80vh;
+  flex: 0.5;
+  margin: 10px;
+  border-radius: 50px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: flex 1s ease-in;
+  cursor: pointer;
+  box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+  text-align: center;
+  font-family: inherit;
+  background-image: var(--url-1);
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+}
+
+h3 {
+  position: absolute;
+  font-size: 32px;
+  bottom: 25px;
+  left: 25px;
+  margin: 0;
+  opacity: 0;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+.panel.active {
+  flex: 4;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.6s ease-in 0.4s;
+}
