@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --color-1: rgb(224, 224, 224);
+  --color-2: rgb(39, 39, 39);
+  --color-3: rgb(55, 225, 255);
+  --color-4: gray;
+  --bg-color-1: rgba(50, 50, 150, 0.3);
+  --bg-color-2: rgba(50, 150, 50, 0.3);
+  --speed: 500ms;
+  --hover-width1: 75%;
+  --hover-width2: 25%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-4);
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg.leftBg {
+  background: url("https://images.unsplash.com/photo-1453306458620-5bbef13a5bca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 0;
+}
+
+.bg.rightBg {
+  background: url("https://images.unsplash.com/photo-1615118393874-b4103fc9694f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  right: 0;
+}
+
+.backdrop {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--bg-color-1);
+}
+
+/* .bg.leftBg::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--bg-color-1);
+}
+
+.bg.rightBg::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--bg-color-2);
+} */
+
+.option1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: var(--color-1);
+  white-space: nowrap;
+  border: 5px solid var(--color-3);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--speed) ease;
+  /* text-transform: uppercase; */
+}
+
+.option1:hover {
+  background-color: var(--bg-color-1);
+  border: 5px solid var(--bg-color-1);
+}
+
+.option2 {
+  position: absolute;
+  top: 20%;
+  right: 50%;
+  transform: translateX(50%);
+  font-size: 3rem;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: var(--color-1);
+  white-space: nowrap;
+  border: 5px solid var(--color-3);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--speed) ease;
+}
+
+.option2:hover {
+  background-color: var(--bg-color-2);
+  border: 5px solid var(--bg-color-2);
+}
+
+.goLeft .leftBg {
+  width: var(--hover-width1);
+}
+
+.goLeft .bg.rightBg {
+  width: var(--hover-width2);
+}
+
+.goRight .leftBg {
+  width: var(--hover-width2);
+}
+
+.goRight .bg.rightBg {
+  width: var(--hover-width1);
+}
+
+.bg.rightBg,
+.bg.leftBg,
+.bg.leftBg::before,
+.bg.rightBg::before {
+  transition: all var(--speed) ease-in-out;
+}
