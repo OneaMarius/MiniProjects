@@ -31,6 +31,20 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:active,
+a:link,
+a:visited {
+  color: var(--color-3);
+}
+
+a:hover {
+  color: var(--color-1);
+}
+
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -225,4 +239,50 @@ h3 {
 .panel.active h3 {
   opacity: 1;
   transition: opacity 0.6s ease-in 0.4s;
+}
+
+#cv {
+  width: 80%;
+  height: 90vh;
+  margin: auto;
+  /* background-color: aqua; */
+  background-image: url("CV.pdf");
+}
+
+.icons {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 30vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.icons i {
+  width: 100px;
+  height: 100px;
+  font-size: 5rem;
+}
+
+#html {
+  color: orange;
+}
+
+#css {
+  color: blue;
+}
+
+#js {
+  color: yellow;
+}
+
+#node {
+  color: green;
+}
+
+#react {
+  color: turquoise;
 }
