@@ -8,6 +8,9 @@ const message = document.getElementById('message')
 let seconds = 0
 let score = 0
 let selected_insect = {}
+let elements =[];
+let adeHeads = ["./pictures/head.png","./pictures/head1.png","./pictures/head2.png","./pictures/head3.png"]
+screens[1].classList.remove('up')
 
 start_btn.addEventListener('click', () => screens[0].classList.add('up'))
 
@@ -20,6 +23,7 @@ choose_insect_btns.forEach(btn => {
         screens[1].classList.add('up')
         setTimeout(createInsect, 1000)
         startGame()
+        console.log(selected_insect.src)
     })
 })
 
@@ -39,13 +43,69 @@ function increaseTime() {
 let insectInterval;
 
 function createInsect() {
+    let indexRandom = Math.floor(Math.random()*4);
+    console.log(indexRandom);
     const insect = document.createElement('div')
-    insect.classList.add('insect')
+    insect.classList.add('marioNet')
     const { x, y } = getRandomLocation()
     insect.style.top = `${y}px`
     insect.style.left = `${x}px`
-    insect.innerHTML = `<img src="${selected_insect.src}" alt="${selected_insect.alt}" style="transform: rotate(${Math.random() * 360}deg)" />`
+    insect.innerHTML = `<div class="bigBP body">
+    <div class="BP lowerBody">
+        <div class="BP topBody">
+            <div class="BP head" style="background-image: url(${adeHeads[indexRandom]});"></div>
+            <div class="BP neck"></div>
 
+            <div class="bigBP arms leftArm">
+                <div class="articArm articLA"></div>
+                <div class="BP topArm TAL">
+                    <div class="articCenterArm"></div>
+                    <div class="BP lowerArm LAL">
+                        <div class="articHand"></div>
+                        <div class="BP hands leftHand"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bigBP arms rightArm">
+                <div class="articArm articRA"></div>
+                <div class="BP topArm TAR">
+                    <div class="articCenterArm"></div>
+                    <div class="BP lowerArm LAR">
+                        <div class="articHand"></div>
+                        <div class="BP hands rightHand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="articBody"></div>
+
+        <div class="bigBP legs leftLeg">
+            <div class="articLeg articLL"></div>
+            <div class="BP topLeg TLL">
+                <div class="articCenterLeg"></div>
+                <div class="BP lowerLeg LLL">
+                    <div class="articFoot"></div>
+                    <div class="BP foots leftFoot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bigBP legs rightLeg">
+            <div class="articLeg articRL"></div>
+            <div class="BP topLeg TLR">
+                <div class="articCenterLeg"></div>
+                <div class="BP lowerLeg LLR">
+                    <div class="articFoot"></div>
+                    <div class="BP foots rightFoot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+    elements = insect.querySelectorAll(".BP");
+    sportMarionet()
     insect.addEventListener('click', catchInsect)
 
     game_container.appendChild(insect)
@@ -62,16 +122,16 @@ function createInsect() {
 }
 
 function moveInsect() {
-    this.style.transform = 'translateX(250px)' 
+    this.style.transform = 'translateX(250px)' ;
 }
 
 function getRandomLocation() {
     const width = window.innerWidth
-    const height = window.innerHeight
-    const x = Math.random() * (width - 200) + 100
-    const y = Math.random() * (height - 200) + 100
-    const a = -500 + Math.random() * 1000
-    const b = -500 + Math.random() * 1000
+    const height = window.innerHeight;
+    const x = Math.random() * (width - 400) + 200
+    const y = Math.random() * (height - 400) + 200
+    const a = -100 + Math.random() * 200
+    const b = -100 + Math.random() * 200
     return { x, y, a, b }
 }
 
@@ -84,14 +144,14 @@ function catchInsect() {
 }
 
 function addInsects() {
-    setTimeout(createInsect, 1000)
-    setTimeout(createInsect, 1500)
+    setTimeout(createInsect, 2000)
+    setTimeout(createInsect, 4000)
 }
 
 function increaseScore() {
     score++
-    // if(score > 19) {
-    //     message.classList.add('visible')
-    // }
+    if(score > 5) {
+        message.classList.add('visible')
+    }
     scoreEl.innerHTML = `Score: ${score}`
 }
